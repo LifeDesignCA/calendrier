@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Calendriers gratuits à imprimer</title>
-  <meta name="description" content="Téléchargez des calendriers gratuits et premium à imprimer.">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Calendrier Super Design | Par Git</title>
+    
+    <link rel="stylesheet" href="styles/main.css"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>
-  <h1>📅 Calendriers à imprimer</h1>
-  <p>Gratuits et premium – simples et élégants</p>
-</header>
+    <main class="calendar-app">
+        
+        <header class="calendar-header">
+            <h1>Calendrier Mensuel Interactif</h1>
+            
+            <nav class="calendar-navigation">
+                <button id="prev-month"> &lt; Précédent</button>
+                <h2 id="current-month-display"></h2> 
+                <button id="next-month"> Suivant &gt;</button>
+            </nav>
+        </header>
 
-<section class="grid">
-  <div class="card">
-    <img src="assets/images/novembre-2025.jpg" alt="Calendrier Novembre 2025">
-    <h2>Novembre 2025</h2>
-    <a href="calendars/novembre-2025.html" class="btn">
-      Voir le calendrier
-    </a>
-  </div>
-</section>
+        <div class="day-names">
+            <div class="day-name">Lun</div>
+            <div class="day-name">Mar</div>
+            <div class="day-name">Mer</div>
+            <div class="day-name">Jeu</div>
+            <div class="day-name">Ven</div>
+            <div class="day-name">Sam</div>
+            <div class="day-name is-weekend">Dim</div>
+        </div>
 
-<footer>
-  <p>© 2025 - Ton site de calendriers</p>
-</footer>
+        <section id="calendar-container" class="calendar-grid-wrapper">
+            </section>
+
+        <footer class="app-footer">
+            <p>&copy; <span id="current-year"></span> Mon Calendrier | Basé sur Git.</p>
+            <button id="theme-toggle">Basculer le Mode Sombre</button>
+        </footer>
+
+    </main>
+
+    <script src="scripts/app.js"></script>
 
 </body>
 </html>
