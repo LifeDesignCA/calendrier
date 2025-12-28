@@ -3,47 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Calendrier Super Design | Par Git</title>
-    
-    <link rel="stylesheet" href="styles/main.css"> 
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Mon Resto Rapide - Accueil</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
 </head>
 <body>
 
-    <main class="calendar-app">
-        
-        <header class="calendar-header">
-            <h1>Calendrier Mensuel Interactif</h1>
-            
-            <nav class="calendar-navigation">
-                <button id="prev-month"> &lt; Précédent</button>
-                <h2 id="current-month-display"></h2> 
-                <button id="next-month"> Suivant &gt;</button>
-            </nav>
-        </header>
-
-        <div class="day-names">
-            <div class="day-name">Lun</div>
-            <div class="day-name">Mar</div>
-            <div class="day-name">Mer</div>
-            <div class="day-name">Jeu</div>
-            <div class="day-name">Ven</div>
-            <div class="day-name">Sam</div>
-            <div class="day-name is-weekend">Dim</div>
+    <header class="main-header">
+        <div class="logo">
+            <h1>MON LOGO</h1> 
         </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Offres</a></li>
+                <li><a href="#">Trouver un Restaurant</a></li>
+                <li><a href="#">Livraison</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+            <button class="btn btn-primary">Commander</button>
+        </div>
+    </header>
 
-        <section id="calendar-container" class="calendar-grid-wrapper">
-            </section>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Nouveau Burger ! Goût Sensationnel !</h2>
+            <p>Découvrez notre édition limitée de saison. Disponible dès aujourd'hui.</p>
+            <a href="#" class="btn btn-secondary">Voir l'offre</a>
+        </div>
+    </section>
 
-        <footer class="app-footer">
-            <p>&copy; <span id="current-year"></span> Mon Calendrier | Basé sur Git.</p>
-            <button id="theme-toggle">Basculer le Mode Sombre</button>
-        </footer>
+    <main class="content-grid">
+        <section class="promo-card">
+            <h3>Le Menu Classique</h3>
+            <p>Nos burgers, frites et boissons que vous adorez.</p>
+            <a href="#">Explorer le menu</a>
+        </section>
 
+        <section class="promo-card special-offer">
+            <h3>Les Offres du Moment</h3>
+            <p>Économisez avec nos coupons exclusifs sur l'application.</p>
+            <a href="#">Voir les deals</a>
+        </section>
+
+        <section class="promo-card delivery-info">
+            <h3>Livraison Express</h3>
+            <p>Faites-vous livrer vos plats favoris directement chez vous.</p>
+            <a href="#">Vérifier la disponibilité</a>
+        </section>
     </main>
 
-    <script src="scripts/app.js"></script>
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="#">Carrières</a>
+            <a href="#">À Propos</a>
+            <a href="#">Politique de Confidentialité</a>
+            <a href="#">Nous Contacter</a>
+        </div>
+        <div class="social-media">
+            <p>Suivez-nous : [FB] [INSTA] [TW]</p>
+        </div>
+        <p class="copyright">© 2025 Mon Resto Rapide. Tous droits réservés.</p>
+    </footer>
 
 </body>
 </html>
