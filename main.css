@@ -1,0 +1,167 @@
+/* styles/main.css */
+
+/* --- 1. Variables CSS (Pour les thèmes et la facilité de modification) --- */
+:root {
+    --bg-color: #f8f9fa; 
+    --text-color: #343a40; 
+    --primary-color: #007bff; 
+    --primary-color-rgb: 0, 123, 255; 
+    --border-color: #e9ecef;
+    --day-cell-bg: #ffffff;
+    --weekend-color: #f1f1f1; /* Fond des jours de weekend */
+    --weekend-text: #dc3545; /* Texte rouge pour les weekends */
+    --empty-day-bg: #e9ecef; /* Fond des jours vides/du mois précédent/suivant */
+}
+
+/* --- Dark Mode --- */
+body.dark-mode {
+    --bg-color: #212529;
+    --text-color: #f8f9fa;
+    --primary-color: #5d9cec;
+    --primary-color-rgb: 93, 156, 236; 
+    --border-color: #495057;
+    --day-cell-bg: #343a40;
+    --weekend-color: #2c3138;
+    --weekend-text: #ff9999; 
+    --empty-day-bg: #2c3138;
+}
+
+/* --- 2. Styles de Base et Typographie --- */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.calendar-app {
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: var(--day-cell-bg);
+}
+
+.calendar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+/* --- 3. Navigation --- */
+.calendar-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#prev-month, #next-month {
+    padding: 8px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#prev-month:hover, #next-month:hover {
+    background-color: #0056b3;
+}
+
+#current-month-display {
+    font-size: 1.6em;
+    font-weight: 700;
+}
+
+/* --- 4. Grille du Calendrier (CSS Grid) --- */
+
+/* Applique la grille aux noms des jours et aux jours du mois */
+.day-names, .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colonnes de taille égale */
+}
+
+/* Noms des jours (Lun, Mar, ...) */
+.day-names {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 8px 8px 0 0; /* Coins arrondis en haut */
+}
+
+.day-name {
+    padding: 10px 0;
+    /* Styles spécifiques pour le nom du dimanche */
+}
+
+/* Cellules des jours (Génération JS) */
+.day-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+    box-sizing: border-box; 
+    min-height: 100px; /* Donne de l'espace pour les événements */
+    border: 1px solid var(--border-color);
+    background-color: var(--day-cell-bg);
+    transition: background-color 0.2s;
+    overflow: hidden; /* Empêche le contenu de déborder */
+}
+
+/* Retire la bordure de la première et dernière colonne pour un look plus propre */
+.day-cell:nth-child(7n+1) {
+    border-left: none;
+}
+.day-cell:nth-child(7n) {
+    border-right: none;
+}
+
+.day-cell:hover:not(.empty-day) {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+
+.day-number {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+/* Styles spéciaux */
+.is-today {
+    border: 3px solid var(--primary-color);
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+}
+
+.is-weekend {
+    background-color: var(--weekend-color); 
+}
+
+.is-weekend .day-number, .day-names .is-weekend {
+    color: var(--weekend-text); 
+}
+
+.empty-day {
+    background-color: var(--empty-day-bg);
+    cursor: default;
+    border: none;
+}
+
+/* --- 5. Footer et Thème Toggle --- */
+.app-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
