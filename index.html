@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Resto Rapide - Accueil</title>
-    <link rel="stylesheet" href="styles.css"> 
+    
+    <link rel="stylesheet" href="styles/styles.css"> 
+    
     <link rel="icon" href="favicon.ico" type="image/x-icon"> 
 </head>
 <body>
 
     <header class="main-header">
         <div class="logo">
-            <h1>MON LOGO</h1> 
+            <a href="index.html"><h1>MON LOGO RAPIDE</h1></a>
         </div>
+        
         <nav class="main-nav">
             <ul>
                 <li><a href="#">Menu</a></li>
@@ -21,35 +24,36 @@
                 <li><a href="#">Livraison</a></li>
             </ul>
         </nav>
+        
         <div class="actions">
-            <button class="btn btn-primary">Commander</button>
+            <button class="btn btn-primary" id="order-btn">Commander</button>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
             <h2>Nouveau Burger ! Goût Sensationnel !</h2>
-            <p>Découvrez notre édition limitée de saison. Disponible dès aujourd'hui.</p>
+            <p>Découvrez notre édition limitée de saison. Cliquez pour commander maintenant.</p>
             <a href="#" class="btn btn-secondary">Voir l'offre</a>
         </div>
     </section>
 
     <main class="content-grid">
-        <section class="promo-card">
+        <section class="promo-card menu-card">
             <h3>Le Menu Classique</h3>
-            <p>Nos burgers, frites et boissons que vous adorez.</p>
+            <p>Nos burgers, frites et boissons que vous adorez. Disponible toute la journée.</p>
             <a href="#">Explorer le menu</a>
         </section>
 
-        <section class="promo-card special-offer">
+        <section class="promo-card special-offer-card">
             <h3>Les Offres du Moment</h3>
-            <p>Économisez avec nos coupons exclusifs sur l'application.</p>
-            <a href="#">Voir les deals</a>
+            <p>Économisez gros avec nos coupons exclusifs sur l'application.</p>
+            <a href="#">Télécharger l'App</a>
         </section>
 
-        <section class="promo-card delivery-info">
+        <section class="promo-card delivery-info-card">
             <h3>Livraison Express</h3>
-            <p>Faites-vous livrer vos plats favoris directement chez vous.</p>
+            <p>Faites-vous livrer vos plats favoris directement chez vous en 30 minutes.</p>
             <a href="#">Vérifier la disponibilité</a>
         </section>
     </main>
@@ -62,10 +66,11 @@
             <a href="#">Nous Contacter</a>
         </div>
         <div class="social-media">
-            <p>Suivez-nous : [FB] [INSTA] [TW]</p>
+            <p>Suivez-nous : Facebook | Instagram | X (Twitter)</p>
         </div>
         <p class="copyright">© 2025 Mon Resto Rapide. Tous droits réservés.</p>
     </footer>
-
+    
+    <script src="scripts/main.js"></script> 
 </body>
 </html>
