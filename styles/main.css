@@ -1,167 +1,279 @@
-/* styles/main.css */
+/* styles/styles.css */
 
-/* --- 1. Variables CSS (Pour les thèmes et la facilité de modification) --- */
-:root {
-    --bg-color: #f8f9fa; 
-    --text-color: #343a40; 
-    --primary-color: #007bff; 
-    --primary-color-rgb: 0, 123, 255; 
-    --border-color: #e9ecef;
-    --day-cell-bg: #ffffff;
-    --weekend-color: #f1f1f1; /* Fond des jours de weekend */
-    --weekend-text: #dc3545; /* Texte rouge pour les weekends */
-    --empty-day-bg: #e9ecef; /* Fond des jours vides/du mois précédent/suivant */
-}
+/* Importation d'une police simple et lisible (Roboto) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-/* --- Dark Mode --- */
-body.dark-mode {
-    --bg-color: #212529;
-    --text-color: #f8f9fa;
-    --primary-color: #5d9cec;
-    --primary-color-rgb: 93, 156, 236; 
-    --border-color: #495057;
-    --day-cell-bg: #343a40;
-    --weekend-color: #2c3138;
-    --weekend-text: #ff9999; 
-    --empty-day-bg: #2c3138;
-}
-
-/* --- 2. Styles de Base et Typographie --- */
-body {
-    font-family: 'Inter', sans-serif;
+/* Réinitialisation de base */
+* {
     margin: 0;
-    padding: 20px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.calendar-app {
-    max-width: 1200px;
-    margin: 0 auto;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    background-color: var(--day-cell-bg);
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f7f7f7; /* Gris très clair pour le fond */
+    line-height: 1.6;
 }
 
-.calendar-header {
-    text-align: center;
-    margin-bottom: 20px;
+/* Variables de couleur inspirées de l'industrie */
+:root {
+    --color-primary: #e53e3e; /* Rouge vif */
+    --color-secondary: #ffc107; /* Jaune vif */
+    --color-dark: #2d3748; /* Gris foncé/Bleu nuit */
+    --color-light: #fff;
+    --spacing-large: 5%;
 }
 
-h1 {
-    font-size: 1.8em;
-    margin-bottom: 10px;
+a {
+    text-decoration: none;
 }
 
-/* --- 3. Navigation --- */
-.calendar-navigation {
+/* --- EN-TÊTE --- */
+.main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 15px;
+    padding: 15px var(--spacing-large);
+    background-color: var(--color-light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Nécessaire pour le positionnement du menu mobile */
 }
 
-#prev-month, #next-month {
-    padding: 8px 15px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+.logo h1 {
+    font-size: 26px;
+    color: var(--color-primary);
+    font-weight: 900;
 }
 
-#prev-month:hover, #next-month:hover {
-    background-color: #0056b3;
-}
-
-#current-month-display {
-    font-size: 1.6em;
-    font-weight: 700;
-}
-
-/* --- 4. Grille du Calendrier (CSS Grid) --- */
-
-/* Applique la grille aux noms des jours et aux jours du mois */
-.day-names, .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 colonnes de taille égale */
-}
-
-/* Noms des jours (Lun, Mar, ...) */
-.day-names {
-    background-color: var(--primary-color);
-    color: white;
-    font-weight: 700;
-    text-align: center;
-    border-radius: 8px 8px 0 0; /* Coins arrondis en haut */
-}
-
-.day-name {
-    padding: 10px 0;
-    /* Styles spécifiques pour le nom du dimanche */
-}
-
-/* Cellules des jours (Génération JS) */
-.day-cell {
+/* Navigation de Bureau */
+.main-nav ul {
+    list-style: none;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px;
-    box-sizing: border-box; 
-    min-height: 100px; /* Donne de l'espace pour les événements */
-    border: 1px solid var(--border-color);
-    background-color: var(--day-cell-bg);
-    transition: background-color 0.2s;
-    overflow: hidden; /* Empêche le contenu de déborder */
 }
 
-/* Retire la bordure de la première et dernière colonne pour un look plus propre */
-.day-cell:nth-child(7n+1) {
-    border-left: none;
-}
-.day-cell:nth-child(7n) {
-    border-right: none;
-}
-
-.day-cell:hover:not(.empty-day) {
-    background-color: rgba(var(--primary-color-rgb), 0.1);
+.main-nav ul li a {
+    text-decoration: none;
+    color: var(--color-dark);
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+    padding: 5px 0;
 }
 
-.day-number {
-    font-size: 1.2em;
-    font-weight: 700;
-    color: var(--text-color);
-    margin-bottom: 5px;
+.main-nav ul li a:hover {
+    color: var(--color-primary);
 }
 
-/* Styles spéciaux */
-.is-today {
-    border: 3px solid var(--primary-color);
-    background-color: rgba(var(--primary-color-rgb), 0.05);
-}
-
-.is-weekend {
-    background-color: var(--weekend-color); 
-}
-
-.is-weekend .day-number, .day-names .is-weekend {
-    color: var(--weekend-text); 
-}
-
-.empty-day {
-    background-color: var(--empty-day-bg);
-    cursor: default;
+/* --- BOUTONS GÉNÉRIQUES --- */
+.btn {
+    padding: 10px 22px;
     border: none;
+    border-radius: 30px; /* Coins arrondis pour un look moderne */
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
 }
 
-/* --- 5. Footer et Thème Toggle --- */
-.app-footer {
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    box-shadow: 0 4px 6px rgba(229, 62, 62, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #c53030;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+    border: 2px solid var(--color-dark);
+}
+
+.btn-secondary:hover {
+    background-color: #ffda6a;
+}
+
+/* --- SECTION HÉRO --- */
+.hero {
+    /* REMPLACER PAR VOTRE IMAGE - le chemin ici suppose qu'elle est à la racine */
+    background: url('../hero-background.jpg') no-repeat center center/cover; 
+    background-color: #333; /* Couleur de secours */
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-top: 30px;
-    padding-top: 15px;
-    border-top: 1px solid var(--border-color);
+    color: var(--color-light);
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5); /* Overlay sombre */
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero-content h2 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    font-weight: 900;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+}
+
+/* --- GRILLE DE CONTENU (Cartes de Promo) --- */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 60px var(--spacing-large);
+}
+
+.promo-card {
+    background-color: var(--color-light);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.promo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.promo-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+
+.promo-card p {
+    margin-bottom: 20px;
+}
+
+.promo-card a {
+    font-weight: 700;
+    color: var(--color-dark);
+    text-decoration: underline;
+}
+
+.promo-card a:hover {
+    color: var(--color-primary);
+}
+
+
+/* --- PIED DE PAGE --- */
+.main-footer {
+    background-color: var(--color-dark);
+    color: #a0aec0;
+    padding: 40px var(--spacing-large);
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #a0aec0;
+    text-decoration: none;
+    margin: 0 12px;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--color-secondary);
+}
+
+.social-media, .copyright {
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+
+/* -------------------------------------- */
+/* --- DESIGN RESPONSIVE ET MOBILE --- */
+/* -------------------------------------- */
+
+/* MOBILE : Bouton Menu Burger */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2.2em;
+    color: var(--color-dark);
+    cursor: pointer;
+    line-height: 1; /* Assure que le symbole est bien centré */
+}
+
+@media (max-width: 768px) {
+    
+    /* Afficher le bouton de bascule sur les petits écrans */
+    .menu-toggle {
+        display: block;
+        order: 2; /* Positionne le bouton hamburger après le logo si l'ordre est flex */
+    }
+
+    .main-header {
+        /* Permet de positionner les éléments du header sur une seule ligne et de laisser le menu passer dessous */
+        flex-wrap: wrap; 
+    }
+
+    /* Le menu de navigation masqué par défaut */
+    .main-nav {
+        width: 100%;
+        order: 3; /* Le met en bas du header sur mobile */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+    }
+
+    /* Afficher le menu lorsqu'il a la classe 'active' */
+    .main-nav.active {
+        max-height: 300px; /* Une hauteur suffisante pour afficher les liens */
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        padding: 10px 0;
+        background-color: #fafafa;
+        border-top: 1px solid #eee;
+    }
+
+    .main-nav ul li a {
+        display: block;
+        padding: 10px var(--spacing-large);
+        border-bottom: 1px solid #f0f0f0;
+        margin: 0;
+    }
+
+    /* Ajustements généraux pour le mobile */
+    .actions {
+        order: 1;
+    }
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    .main-header {
+        padding: 15px 3%;
+    }
 }
